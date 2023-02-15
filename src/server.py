@@ -28,7 +28,7 @@ class GFG(BaseHTTPRequestHandler):
         elif score > 61:
             print_string = sentences[3] + " " + name + "!"
 
-        printer.print_data(print_string)
+        printer.print_data(print_string, config.get_printer_name())
 
 port = HTTPServer(('', 5555), GFG)
 port.serve_forever()

@@ -16,3 +16,7 @@ def get_baudrate():
 
 def get_comport():
     conf.getint('com','comport')
+
+def get_printer_name():
+    return conf.get('printer', 'printername')
+    
