@@ -7,7 +7,12 @@ import config
 import printer
 
 class GFG(BaseHTTPRequestHandler):
-    
+    def __init__():
+        if printer.check_font_installed() == False:
+            print("Has to be installed first!")
+            exit();
+
+
     def do_POST(self):
         # self._set_headers()
         self.data_string = self.rfile.read(int(self.headers['Content-Length']))
