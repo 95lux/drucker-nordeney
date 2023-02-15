@@ -9,9 +9,10 @@ import printer
 class GFG(BaseHTTPRequestHandler):
     def __init__():
         if printer.check_font_installed() == False:
-            print("Has to be installed first!")
+            print("Font has to be installed first!")
             exit();
-
+        else:
+            print("Font is installed to system.")
 
     def do_POST(self):
         # self._set_headers()
