@@ -1,0 +1,409 @@
+*GPDSpecVersion: "1.0"
+*Include: "StdNames.gpd"
+*GPDFileVersion: "1.0"
+*GPDFileName: "pcl300.GPD"
+*ModelName: "BOCA PCL 300 dpi"
+*MasterUnits: PAIR(300, 300)
+*ResourceDLL: "pcl300.dll"
+*PrinterType: PAGE
+*MaxCopies: 999
+*Feature: Orientation
+
+{
+    *rcNameID: =ORIENTATION_DISPLAY
+    *DefaultOption: PORTRAIT
+    *Option: PORTRAIT
+    {
+        *rcNameID: =PORTRAIT_DISPLAY
+        *Command:CmdSelect
+        {
+            *Order: PAGE_SETUP.1
+            *Cmd: "<1B>&l0O<1B>&l2a4d1e42F"
+        }
+    }
+    *Option: LANDSCAPE_CC90
+    {
+        *rcNameID: =LANDSCAPE_DISPLAY
+        *Command:CmdSelect
+        {
+            *Order: PAGE_SETUP.1
+            *Cmd: "<1B>&l1O<1B>&l2a4d1e42F"
+        }
+    }
+}
+*Feature: InputBin
+{
+    *rcNameID: =PAPER_SOURCE_DISPLAY
+    *DefaultOption: Option1
+    *Option: Option1
+    {
+        *rcNameID: 264
+        *OptionID: 264
+        *Command:CmdSelect
+        {
+            *Order: PAGE_SETUP.2
+            *Cmd: "<1B>&l1H"
+        }
+    }
+    *Option: Option2
+    {
+        *rcNameID: 265
+        *OptionID: 265
+        *Command:CmdSelect
+        {
+            *Order: PAGE_SETUP.2
+            *Cmd: "<1B>&l4H"
+        }
+    }
+*Option: Option3
+    {
+        *rcNameID: 266
+        *OptionID: 266
+        *Command:CmdSelect
+        {
+            *Order: PAGE_SETUP.2
+            *Cmd: "<1B>&l5H"
+        }
+    }
+    *Option: Option4
+    {
+        *rcNameID: 267
+        *OptionID: 267
+        *Command:CmdSelect
+        {
+            *Order: PAGE_SETUP.2
+            *Cmd: "<1B>&lH"
+        }
+    }
+}
+*Feature: Resolution
+{
+    *rcNameID: =RESOLUTION_DISPLAY
+    *DefaultOption: Option1
+    *Option: Option1
+    {
+        *Name: "300 x 300 " =DOTS_PER_INCH
+        *DPI: PAIR(300, 300)
+        *TextDPI: PAIR(300, 300)
+        *%PinsPerLogPass: 8
+        *%PinsPerPhysPass: 8
+        *MinStripBlankPixels: 32
+        EXTERN_GLOBAL: *StripBlanks: LIST(LEADING,ENCLOSED,TRAILING)
+        *SpotDiameter: 100
+        *Command: CmdBeginRaster { *Cmd : "<1B>*r1A" }
+        *Command: CmdEndRaster { *Cmd : "<1B>*rB" }
+        *Command: CmdSendBlockData { *Cmd : "<1B>*b" %d{NumOfDataBytes}"W" }
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.6
+            *Cmd: "<1B>*t300R"
+        }
+    }
+}
+*Feature: PaperSize
+{
+    *rcNameID: =PAPER_SIZE_DISPLAY
+    *DefaultOption: Option1
+    *Option: Option1
+    {
+        *rcNameID: 258
+        *OptionID: 258
+        *PageDimensions: PAIR(600, 1650)
+        *PrintableArea: PAIR(600, 1647)
+        *PrintableOrigin: PAIR(3,0)
+	*CursorOrigin: PAIR(0,0)
+    }
+    *Option: Option2
+    {
+        *rcNameID: 259
+        *OptionID: 259
+        *PageDimensions: PAIR(975, 600)
+        *PrintableArea: PAIR(972, 597)
+        *PrintableOrigin: PAIR(3,0)
+	*CursorOrigin: PAIR(0,0)
+    }
+    *Option: Option3
+    {
+        *rcNameID: 260
+        *OptionID: 260
+        *PageDimensions: PAIR(638, 1013)
+        *PrintableArea: PAIR(635, 1010)
+        *PrintableOrigin: PAIR(3,0)
+	*CursorOrigin: PAIR(0,0)
+    }
+    *Option: Option4
+    {
+        *rcNameID: 261
+        *OptionID: 261
+        *PageDimensions: PAIR(975, 1800)
+        *PrintableArea: PAIR(972, 1797)
+        *PrintableOrigin: PAIR(3,0)
+	*CursorOrigin: PAIR(0,0)
+    }
+    *Option: Option5
+    {
+        *rcNameID: 262
+        *OptionID: 262
+        *PageDimensions: PAIR(975, 2397)
+        *PrintableArea: PAIR(972, 2400)
+        *PrintableOrigin: PAIR(3,0)
+	*CursorOrigin: PAIR(0,0)
+    }
+    *Option: Option6
+    {
+        *rcNameID: 263
+        *OptionID: 263
+        *PageDimensions: PAIR(1200, 1800)
+        *PrintableArea: PAIR(1197, 1797)
+        *PrintableOrigin: PAIR(3,0)
+	*CursorOrigin: PAIR(0,0)
+    }
+
+
+    *Option: Option7
+ {
+       *rcNameID: 270
+        *OptionID: 270
+        *PageDimensions: PAIR(1200, 4200)
+        *PrintableArea: PAIR(1197,4197)
+        *PrintableOrigin: PAIR(3,0)
+	*CursorOrigin: PAIR(0,0)
+}
+    *Option: 11X17
+ {
+    *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+                *PrintableArea: PAIR(3300, 5100)
+        *PrintableOrigin: PAIR(3,0)
+                *CursorOrigin: PAIR(0,0)
+       *CenterPrintable?: FALSE
+}
+
+
+    *Option: LETTER
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2550, 3300)
+                *PrintableOrigin: PAIR(3, 0)
+                *CursorOrigin: PAIR(0, 0)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(2550, 3300)
+                *PrintableOrigin: PAIR(3, 0)
+                *CursorOrigin: PAIR(0, 0)
+            }
+        }
+    }
+
+    *Option: CUSTOMSIZE
+    {
+    *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+                *MinSize: PAIR(300,300)
+                *MaxSize: PAIR(1350,5400)
+                *CursorOrigin: PAIR(0, 0)
+                *MaxPrintableWidth: 1350
+                *PrintableOrigin: PAIR(3,0)
+       *CenterPrintable?: FALSE
+   }
+
+
+}
+*Feature: Halftone
+{
+    *rcNameID: =HALFTONING_DISPLAY
+    *DefaultOption: HT_PATSIZE_AUTO
+    *Option: HT_PATSIZE_AUTO
+    {
+        *rcNameID: =HT_AUTO_SELECT_DISPLAY
+
+    }
+    *Option: HT_PATSIZE_6x6_M
+    {
+        *rcNameID: =HT_DITHER6X6_DISPLAY
+    }
+     *Option: HT_PATSIZE_SUPERCELL_M
+    {
+        *rcNameID: =HT_SUPERCELL_DISPLAY
+    }
+    *Option: HT_PATSIZE_8x8_M
+    {
+        *rcNameID: =HT_DITHER8X8_DISPLAY
+    }
+}
+*Feature: Memory
+{
+    *rcNameID: =PRINTER_MEMORY_DISPLAY
+    *DefaultOption: 2560KB
+    *Option: 896KB
+    {
+		*Command: CmdStartDoc
+		{
+    			*Order: DOC_SETUP.1
+    			*%Cmd: "<1B>E<1B>&l0L<1B>*r3F<1B>&l0S"
+    			*Cmd: "<1B>E<1B>&l0L<1B>*r0F<1B>&l0S"
+		}
+        *Name: "896KB"
+        *MemoryConfigKB: PAIR(896, 896)
+    }
+    *Option: 2560KB
+    {
+		*Command: CmdStartDoc
+		{
+    			*Order: DOC_SETUP.1
+    			*Cmd: "<1B>E<1B>&l0L<1B>*r0F<1B>&l0S"
+		}
+        *Name: "2560KB"
+        *MemoryConfigKB: PAIR(2560, 2560)
+    }
+}
+
+
+*% START - new section - removed CmdEndJob and replaced it with paper handling stuff below
+*Command: CmdStartPage
+{
+    *Order: PAGE_SETUP.1
+    *%Cmd: "<1B>*b0M<0D>"
+    *Cmd: "<1B>*p0Y<1B>*b0M<0D>"
+}
+*% END - new section
+
+*% new stuff - may 2015 - cut after last ticket
+*Feature: PAPER_HANDLING
+{
+    *rcNameID: =OUTPUTBIN_DISPLAY
+    *%Name: = PAPER_HANDLING
+    *DefaultOption: Normal_Mode
+    *Option: PLAIN_PAPER_DISPLAY
+    {
+        *Name: "Normal Mode"
+        *Command: CmdFF { *Cmd : "<0C>" }
+        *Command: CmdSelect
+        {
+        *Order: PAGE_FINISH.1
+        *Cmd: ""
+    	*Order:	JOB_FINISH.1
+		*Cmd:	"<1B>E"
+		}
+    }
+   
+    *%Option: GLOSSY_PAPER_DISPLAY
+    *Option: NOCUT
+    {
+        *Name: "Disable Cutter"
+        *Command: CmdFF { *Cmd : "%<VS1>%<q>%<VS2>" }
+        *Command: CmdSelect
+        {
+        *Order: PAGE_FINISH.1
+        *Cmd: ""
+        *Order:	JOB_FINISH.1
+		*Cmd:	"<1B>E"
+		}
+    }
+    *Option: MATTE_PAPER_DISPLAY
+    {
+        *Name: "Cut last ticket of job only"
+		*Command: CmdFF { *Cmd : "%<VS1>%<q>%<VS2>" }
+		*Command: CmdSelect
+        {
+        *Order: JOB_FINISH.1
+        *Cmd: "%<VS1>%<FC>%<VS2><1B>E"
+        }
+    }
+}
+*% end of new stuff - may 2015
+
+
+
+*RotateCoordinate?: FALSE
+*%RotateCoordinate?: TRUE
+*%RotateSize?: TRUE
+*%TRUE creates negative x - doesn't help with y.
+*RotateRaster?: TRUE
+*RotateFont?: TRUE
+*TextCaps: LIST(TC_OP_CHARACTER,TC_CR_90,TC_EA_DOUBLE,TC_RA_ABLE,TC_VA_ABLE)
+*MemoryUsage: LIST(FONT, RASTER, VECTOR)
+*%CursorXAfterCR: AT_CURSOR_X_ORIGIN
+*CursorXAfterCR: AT_PRINTABLE_X_ORIGIN
+*BadCursorMoveInGrxMode: LIST(X_PORTRAIT,Y_LANDSCAPE)
+
+*XMoveThreshold: 0
+*YMoveThreshold: 0
+*XMoveUnit: 300
+*YMoveUnit: 300
+*Command: CmdXMoveAbsolute { *Cmd : "<1B>*p" %d{(DestX)}"X" }
+*Command: CmdYMoveAbsolute { *Cmd : "<1B>*p" %d{(DestY)}"Y" }
+
+
+*Command: CmdXMoveRelRight { *Cmd : "<1B>*p+" %d[0,2400]{max_repeat(DestXRel )}"X" }
+*Command: CmdXMoveRelLeft { *Cmd : "<1B>*p-" %d[0,2400]{max_repeat(DestXRel )}"X" }
+*Command: CmdYMoveRelDown { *Cmd : "<1B>*p+" %d{DestYRel}"Y" }
+*Command: CmdYMoveRelUp { *Cmd : "<1B>*p-" %d{DestYRel}"Y" }
+
+
+*Command: CmdCR { *Cmd : "<0D>" }
+*Command: CmdLF { *Cmd : "<0A>" }
+*%Command: CmdFF { *Cmd : "<0C>" }
+*Command: CmdBackSpace { *Cmd : "<08>" }
+*Command: CmdUniDirectionOn { *Cmd : "<00>" }
+*Command: CmdUniDirectionOff { *Cmd : "<00>" }
+*Command: CmdPushCursor { *Cmd : "<1B>&f0S" }
+*Command: CmdPopCursor { *Cmd : "<1B>&f1S" }
+*Command: CmdEnableTIFF4 { *Cmd : "<1B>*b2M" }
+*Command: CmdDisableCompression { *Cmd : "<1B>*b0M" }
+
+*Command:CmdCopies
+{
+    *Order: PAGE_SETUP.3
+    *Cmd: "<1B>&l" %d[1,32767]{NumOfCopies}"X"
+}
+
+*% Next four lines contain font download definitions
+*MinFontID: 16534
+*MaxFontID: 32768
+*FontFormat: HPPCL
+*%FontFormat: HPPCL_RES
+*Command: CmdSetFontID { *Cmd : "<1B>*c" %d{NextFontID}"D" }
+*Command: CmdSelectFontID { *Cmd : "<1B>(" %d{CurrentFontID}"X" }
+*Command: CmdSetCharCode { *Cmd : "<1B>*c" %d{NextGlyph}"E" }
+
+*Command: CmdUnderlineOn { *Cmd : "<1B>&dD" }
+*Command: CmdUnderlineOff { *Cmd : "<1B>&d@" }
+
+*MinGrayFill: 1
+*MaxGrayFill: 100
+*%Command: CmdSetRectWidth { *Cmd : "<1B>*c" %d{(RectXSize / 2) }"A" }
+*%Command: CmdSetRectHeight { *Cmd : "<1B>*c" %d{(RectYSize / 2) }"B" }
+*Command: CmdRectGrayFill { *Cmd : "<1B>*c" %d{GrayPercentage }"g2P" }
+*Command: CmdRectWhiteFill { *Cmd : "<1B>*c1P" }
+
+
+
+*Command: CmdSetRectWidth { *Cmd : "<1B>*c" %d{RectXSize}"A" }
+*Command: CmdSetRectHeight { *Cmd : "<1B>*c" %d{RectYSize}"B" }
+
+
+*%CharPosition: UPPERLEFT
+*CharPosition: BASELINE
+*EjectPageWithFF?: TRUE
+*%EjectPageWithFF?: FALSE
+*OutputDataFormat: H_BYTE
+*%OutputDataFormat: V_BYTE
+*OptimizeLeftBound?: TRUE
+*%OptimizeLeftBound?: FALSE
+
+*CursorXAfterSendBlockData: AT_GRXDATA_ORIGIN
+*CursorYAfterSendBlockData: AUTO_INCREMENT
+*%CursorYAfterSendBlockData: NO_MOVE
+
+
+*DefaultFont: 1
+*DefaultCTT: 1
+*%ReselectFont: LIST(AFTER_GRXDATA, AFTER_XMOVE)
+*DeviceFonts: LIST(1,2,3,4,5,6)
+*%Command: CmdWhiteTextOn { *Cmd : "%<EI>" }
+*%Command: CmdWhiteTextOff { *Cmd : "%<DI>" }

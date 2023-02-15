@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"?>
+<dpinst>
+  
+  
+
+
+<!-- Remove for debugging only. This allows to install unsigned drivers.
+  <legacyMode/>
+-->
+
+</dpinst>
