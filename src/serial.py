@@ -10,3 +10,6 @@ def create_connection(port, baudrate):
         bytesize=serial.SEVENBITS
     )
     return connection
+
+# serial_connection = serial.create_connection(config.get_comport(), config.get_baudrate())
+# serial_connection.isOpen()
