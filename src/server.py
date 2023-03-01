@@ -1,18 +1,15 @@
+# import pip
+# pip.main(["install", "win32printing"])
 
 from http.server import *
 import json
+# import serial
 
-import serial
 import config
 import printer
 
 class GFG(BaseHTTPRequestHandler):
-    def __init__():
-        if printer.check_font_installed() == False:
-            print("Font has to be installed first!")
-            exit();
-        else:
-            print("Font is installed to system.")
+    
 
     def do_POST(self):
         # self._set_headers()
@@ -36,7 +33,25 @@ class GFG(BaseHTTPRequestHandler):
 
         printer.print_data(print_string, config.get_printer_name())
 
+def check_requirements():
+        if printer.check_font_installed() == False:
+            print("[x] Required font has to be installed first! Program shutting down... ")
+            exit()
+        else:
+            print("[✓] Font is installed to system")
+
+        # if(printer.check_printer_available()){
+        #     print("Printer not available! Program shutting down...")
+        #     exit()
+        # }
+
+        print("[✓] Printer name: " + config.get_printer_name())
+        print("[✓] Configured sentences: ".join(config.get_sentences()))
+
+
+check_requirements()
 port = HTTPServer(('', 5555), GFG)
+print("server is running on :5555")
 port.serve_forever()
 
 
