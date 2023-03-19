@@ -2,6 +2,12 @@
 Simple printer service written in python.
 Evaluates POST Request body.
 
+Before usage install pywin32 with following command:
+
+```
+python -m pip install --upgrade pywin32
+```
+
 ## POST Request
 
 The server application gets its commands via POST request. It listens on  ``ipaddress:5555/print`` 

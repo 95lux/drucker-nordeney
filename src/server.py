@@ -46,7 +46,8 @@ def check_requirements():
         # }
 
         print("[✓] Printer name: " + config.get_printer_name())
-        print("[✓] Configured sentences: ".join(config.get_sentences()))
+        print("[✓] Configured sentences: ")
+        print((config.get_sentences()))
 
 
 check_requirements()
