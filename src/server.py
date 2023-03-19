@@ -31,7 +31,7 @@ class GFG(BaseHTTPRequestHandler):
         elif score > 61:
             print_string = sentences[3] + " " + name + "!"
 
-        printer.print_data(print_string, config.get_printer_name())
+        printer.print_data(print_string, config.get_printer_name(), config.get_max_jobs())
 
 def check_requirements():
         if printer.check_font_installed() == False:

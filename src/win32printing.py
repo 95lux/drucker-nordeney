@@ -130,7 +130,9 @@ class PrinterBase(object):
     def del_jobs(self):
         for job in self.jobs:
             win32print.SetJob(win32print.OpenPrinter(self.printer_name), job['JobId'], 0, None, win32print.JOB_CONTROL_DELETE)
-        
+
+    def del_job(self, job_Id):
+        win32print.SetJob(win32print.OpenPrinter(self.printer_name), job_Id, 0, None, win32print.JOB_CONTROL_DELETE)
 
     def start(self):
         self.start_doc()
