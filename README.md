@@ -26,7 +26,7 @@ Sentences which are printed on the ticket. Follows with *"name!"*
 
 ### *printer* section
 
-printername: Windows hardware name of the used printer. As long as the printer is not exchanged, it is: "Boca BIDI FGL 26/46 200 DPI"  
+**printername**: Windows hardware name of the used printer. As long as the printer is not exchanged, it is: "Boca BIDI FGL 26/46 200 DPI"  
 
-maxjobs: Sets the maximum number of printer jobs, that get queued when the printer is not connected or not available due to errors/misfunction (e.g. paper jam). The oldest jobs get deleted, the new jobs get added. The job queue contains always the most recent added jobs.
+**maxjobs**: Sets the maximum number of printer jobs, that get queued when the printer is not connected or not available due to errors/misfunction (e.g. paper jam). The oldest jobs get deleted, the new jobs get added. The job queue contains always the most recent added jobs.
 
