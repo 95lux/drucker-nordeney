@@ -21,4 +21,4 @@ def get_printer_name():
     return conf.get('printer', 'printername')
 
 def get_max_jobs():
-    return conf.get('printer', 'maxjobs')
+    return conf.getint('printer', 'maxjobs')

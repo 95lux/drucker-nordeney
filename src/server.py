@@ -9,7 +9,14 @@ import config
 import printer
 
 class GFG(BaseHTTPRequestHandler):
-    
+
+    def do_OPTIONS(self):
+        self.send_response(200, "ok")
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, OPTIONS')
+        self.send_header("Access-Control-Allow-Headers", "X-Requested-With")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.end_headers()
 
     def do_POST(self):
         # self._set_headers()
@@ -30,7 +37,11 @@ class GFG(BaseHTTPRequestHandler):
             print_string = sentences[2] + " " + name + "!"
         elif score > 61:
             print_string = sentences[3] + " " + name + "!"
-
+        else:
+            print("Invalid POST!")
+            print(self.data_string)
+            return
+            
         printer.print_data(print_string, config.get_printer_name(), config.get_max_jobs())
 
 def check_requirements():
