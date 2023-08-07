@@ -3,6 +3,7 @@
 
 from http.server import *
 import json
+
 # import serial
 
 import config
@@ -35,14 +36,14 @@ class GFG(BaseHTTPRequestHandler):
             print_string = sentences[1] + " " + name + "!"
         elif score <= 60:
             print_string = sentences[2] + " " + name + "!"
-        elif score > 61:
+        elif score > 60:
             print_string = sentences[3] + " " + name + "!"
-        else:
-            print("Invalid POST!")
-            print(self.data_string)
-            return
-            
+        # else:
+        #     print("Invalid POST!")
+        #     print(self.data_string)
+        #     return
         printer.print_data(print_string, config.get_printer_name(), config.get_max_jobs())
+
 
 def check_requirements():
         if printer.check_font_installed() == False:
